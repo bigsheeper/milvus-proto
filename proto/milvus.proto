@@ -1818,7 +1818,7 @@ message GetImportProgressRequest {
 
 message GetImportProgressResponse {
   common.Status status = 1;
-  common.ImportStateV2 state = 2;
+  ImportState state = 2;
   string reason = 3;
   int64 progress = 4;
 }
@@ -1830,6 +1830,14 @@ message ListImportsRequest {
 message ListImportsResponse {
   common.Status status = 1;
   repeated string requestIDs = 2;
+}
+
+enum ImportState {
+  None = 0;
+  Pending = 1;
+  InProgress = 2;
+  Failed = 3;
+  Completed = 4;
 }
 
 message ColumnBasedFile {
