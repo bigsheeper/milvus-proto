@@ -132,6 +132,11 @@ service MilvusService {
   rpc ListDatabases(ListDatabasesRequest) returns (ListDatabasesResponse) {}
 
   rpc ReplicateMessage(ReplicateMessageRequest) returns (ReplicateMessageResponse) {}
+
+  // importV2
+  rpc ImportV2(ImportRequest) returns(common.Status){}
+  rpc GetImportProgress(GetImportProgressRequest) returns(GetImportProgressResponse){}
+  rpc ListImports(ListImportsRequest) returns(ListImportsResponse){}
 }
 
 message CreateAliasRequest {
