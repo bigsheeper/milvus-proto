@@ -134,7 +134,7 @@ service MilvusService {
   rpc ReplicateMessage(ReplicateMessageRequest) returns (ReplicateMessageResponse) {}
 
   // importV2
-  rpc ImportV2(ImportRequestV2) returns(common.Status){}
+  rpc ImportV2(ImportRequestV2) returns(ImportResponseV2){}
   rpc GetImportProgress(GetImportProgressRequest) returns(GetImportProgressResponse){}
   rpc ListImports(ListImportsRequest) returns(ListImportsResponse){}
 }
@@ -1810,6 +1810,11 @@ message ImportRequestV2 {
   repeated common.KeyValuePair options = 4;
   string db_name = 5;
   bytes clustering_info = 6;
+}
+
+message ImportResponseV2 {
+  common.Status status = 1;
+  string requestID = 2;
 }
 
 message GetImportProgressRequest {
